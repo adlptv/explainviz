@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Analysis {
+  id             String             @id @default(cuid())
+  title          String
+  sql            String
+  explainOutput  String
+  parsedPlan     String
+  databaseType   String             @default("postgresql")
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+  indexSuggestions IndexSuggestion[]
+
+  @@index([createdAt])
+}
+
+model IndexSuggestion {
+  id              String    @id @default(cuid())
+  analysisId      String
+  analysis        Analysis  @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  tableName       String
+  columnName      String
+  indexType       String
+  estimatedImpact String
+  reasoning       String
+  createdAt       DateTime  @default(now())
+
+  @@index([analysisId])
+}
