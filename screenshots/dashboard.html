@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>ExplainViz</title><style>
+      body{font-family:system-ui,sans-serif;background:#0f1724;color:#e2e8f0;margin:0}
+      .nav{padding:16px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1e293b}
+      .logo{font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px}
+      .logo span{background:linear-gradient(135deg,#10b981,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+      .hero{display:flex;gap:60px;padding:80px 40px;max-width:1200px;margin:0 auto;align-items:center}
+      .hero-left{flex:1}
+      .hero-left h1{font-size:46px;font-weight:800;line-height:1.15;color:#f8fafc;margin:0 0 16px}
+      .hero-left h1 span{color:#10b981}
+      .hero-left p{font-size:16px;color:#94a3b8;line-height:1.6;margin:0 0 28px;max-width:500px}
+      .hero-left .btn{display:inline-flex;padding:12px 28px;border-radius:8px;background:linear-gradient(135deg,#059669,#10b981);color:#fff;font-weight:600;text-decoration:none;font-size:15px}
+      .flame-container{flex:1;background:#0a0f18;border:1px solid #1e293b;border-radius:12px;padding:20px;min-width:450px}
+      .flame-title{font-size:13px;color:#64748b;margin-bottom:16px;font-family:monospace}
+      .flame-row{display:flex;margin-bottom:2px;font-size:10px;font-family:monospace}
+      .flame-bar{height:28px;display:flex;align-items:center;padding:0 8px;color:#fff;white-space:nowrap;overflow:hidden;border-radius:2px}
+      .cost-1{width:100%;background:linear-gradient(90deg,#dc2626,#ef4444)}.cost-2{width:72%;background:linear-gradient(90deg,#ea580c,#f97316)}.cost-3{width:55%;background:linear-gradient(90deg,#ca8a04,#eab308)}.cost-4{width:38%;background:linear-gradient(90deg,#16a34a,#22c55e)}.cost-5{width:48%;background:linear-gradient(90deg,#ca8a04,#eab308)}.cost-6{width:22%;background:linear-gradient(90deg,#16a34a,#22c55e)}.cost-7{width:15%;background:linear-gradient(90deg,#16a34a,#22c55e)}
+      .insight-box{margin-top:20px;padding:14px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.15);border-radius:8px;display:flex;gap:10px;align-items:flex-start}
+      .insight-box .icon{font-size:18px;flex-shrink:0}
+      .insight-box div{font-size:12px;color:#94a3b8;line-height:1.5}
+      .insight-box strong{color:#10b981}
+      .features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1200px;margin:0 auto;padding:60px 40px}
+      .fcard{padding:24px;background:#0f1724;border:1px solid #1e293b;border-radius:10px}
+      .fcard .emoji{font-size:24px;margin-bottom:12px}
+      .fcard h3{font-size:15px;color:#f8fafc;margin:0 0 6px}
+      .fcard p{font-size:13px;color:#64748b;line-height:1.5;margin:0}
+    
+.hero { padding: 20px 40px !important; } .hero-left h1 { font-size: 28px !important; } .hero::before { display: none !important; } .features { display: none !important; }
+</style></head><body>
+      <nav class="nav"><div class="logo">📊 <span>ExplainViz</span></div><div style="color:#64748b;font-size:13px">PostgreSQL · MySQL · SQLite</div></nav>
+      <section class="hero">
+        <div class="hero-left">
+          <h1>See Your <span>Queries.</span><br>Fix Your <span>Performance.</span></h1>
+          <p>Transform cryptic EXPLAIN output into interactive visualizations. Compare plans, get index suggestions, and understand query performance — no DBA required.</p>
+          <a href="#" class="btn">Try It Now →</a>
+        </div>
+        <div class="flame-container">
+          <div class="flame-title">EXPLAIN ANALYZE — SELECT * FROM orders JOIN users ON ...</div>
+          <div class="flame-row"><div class="flame-bar cost-1">Nested Loop (cost=0.00..45623.12 rows=50000) actual=487ms</div></div>
+          <div class="flame-row"><div class="flame-bar cost-2">→ Seq Scan on orders (cost=0.00..12450.00) actual=245ms</div></div>
+          <div class="flame-row"><div class="flame-bar cost-3">→ Index Scan on users_pkey (cost=0.00..0.66 rows=1)</div></div>
+          <div class="flame-row"><div class="flame-bar cost-4">→ Sort (cost=0.00..890.00) actual=34ms</div></div>
+          <div class="flame-row"><div class="flame-bar cost-5">→ Hash Join (cost=0.00..2234.00) actual=112ms</div></div>
+          <div class="flame-row"><div class="flame-bar cost-6">→ Seq Scan on products (cost=0.00..345.00)</div></div>
+          <div class="flame-row"><div class="flame-bar cost-7">→ Index Scan on products_name_idx</div></div>
+          <div class="insight-box"><div class="icon">💡</div><div><strong>Index Suggestion:</strong> Add <code>CREATE INDEX idx_orders_user_id ON orders(user_id)</code><br>Estimated improvement: 487ms → 23ms (95% faster)</div></div>
+        </div>
+      </section>
+      <div class="features">
+        <div class="fcard"><div class="emoji">🔥</div><h3>Flame-Graph Visualization</h3><p>Heat-mapped cost indicators. Click any node for detailed timing, rows, and loops.</p></div>
+        <div class="fcard"><div class="emoji">📊</div><h3>Visual Diff</h3><p>Compare two query plans side-by-side. Highlight what changed and which is faster.</p></div>
+        <div class="fcard"><div class="emoji">💡</div><h3>Index Suggestions</h3><p>Analyze WHERE/JOIN/ORDER BY patterns → concrete CREATE INDEX statements with impact estimates.</p></div>
+        <div class="fcard"><div class="emoji">📝</div><h3>Monaco Editor</h3><p>Syntax-highlighted SQL with real-time EXPLAIN feedback. Paste and analyze instantly.</p></div>
+        <div class="fcard"><div class="emoji">🐘</div><h3>Multi-DB Support</h3><p>PostgreSQL, MySQL, and SQLite. Auto-detects plan format from EXPLAIN output.</p></div>
+        <div class="fcard"><div class="emoji">🔗</div><h3>Embed Ready</h3><p>Iframe-able visualization for internal wikis, Notion docs, and dashboards.</p></div>
+      </div>
+    </body></html>

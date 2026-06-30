@@ -8,9 +8,9 @@ Turns PostgreSQL, MySQL, and SQLite EXPLAIN output into interactive flame-graphs
 
 ## Screenshots
 
-| Flame-Graph Query Plan Visualizer | Index Suggestions and Cost Analysis |
+| Landing Page | Analysis View (Index Suggestions) |
 |:---:|:---:|
-| ![Flame-Graph Query Plan Visualizer](screenshots/hero.png) | ![Index Suggestions and Cost Analysis](screenshots/dashboard.png) |
+| ![Analysis view: index suggestion panel with estimated performance improvement](screenshots/dashboard.png) |
 
 ## Features
 
