@@ -28,9 +28,9 @@
 
 ## 📸 Screenshots
 
-| Landing Page | Dashboard |
+| Flame-Graph Query Plan Visualizer | Index Suggestions & Cost Analysis |
 |:---:|:---:|
-| ![Explainviz Hero](screenshots/hero.png) | ![Explainviz Dashboard](screenshots/dashboard.png) |
+| ![Index Suggestions & Cost Analysis](screenshots/dashboard.png) |
 
 > 💡 *Run locally to see the full interactive experience: `pnpm dev` then open http://localhost:3000*
 
