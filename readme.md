@@ -26,6 +26,15 @@
 - 🌓 **Dark/Light Theme** — Glassmorphism UI
 - 🐳 **Docker** — Multi-stage build with docker-compose
 
+## 📸 Screenshots
+
+| Landing Page | Dashboard |
+|:---:|:---:|
+| ![Explainviz Hero](screenshots/hero.png) | ![Explainviz Dashboard](screenshots/dashboard.png) |
+
+> 💡 *Run locally to see the full interactive experience: `pnpm dev` then open http://localhost:3000*
+
+
 ## 🏗️ Architecture
 
 ```
